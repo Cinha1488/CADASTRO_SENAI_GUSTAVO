@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas NERV</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="fundo-img"></div>
+
+    <div class="cartao-aplicacao">
+        <header class="cabecalho-aplicacao">
+            <h1>Painel de Tarefas</h1>
+            <button id="botao-alternar-tema" class="botao-icone" title="Alternar Tema">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="caixa-entrada">
+            <input type="text" id="campo-tarefa" placeholder="Digite uma nova tarefa...">
+            <button id="botao-adicionar" class="botao-principal">Adicionar</button>
+        </div>
+
+        <div id="contador-tarefas" class="rodape-aplicacao">0 tarefas na lista</div>
+
+        <ul id="lista-tarefas" class="lista-tarefas">
+        </ul>
+    </div>
+
+    <div id="popup-conquista" class="popup-container oculto">
+        <div class="popup-conteudo">
+            
+            <img id="popup-gif" src="img/parabéns.gif" alt="Parabéns!">
+            <p>Missão Cumprida!</p>
+            <audio id="popup-audio" src="parabainsA.mp3"></audio>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+/* Variáveis CSS */
+:root {
+    --gradiente-fundo: linear-gradient(134deg, #8e4794 0%, #97d895 100%);
+    --fundo-cartao: #eec9f1;
+    --cor-texto: #2d3748;
+    --cor-primaria: #6836b8;
+    --cor-primaria-destaque: #b344c9;
+    --cor-borda: #6836b8;
+    --cor-borda2: #4cee67;
+    --cor-perigo: #6836b8;
+    --cor-concluido: #2d3748;
+    --fundo-pergaminho: #eec9f1;
+    --borda-pergaminho: #6836b8;
+    --texto-pergaminho: #2d3748;
+}
+
+/* Modo escuro */
+body.modo-escuro {
+    --gradiente-fundo: linear-gradient(135deg, #27020d 0%, #d80000 100%);
+    --fundo-cartao: #1a202c;
+    --cor-texto: #f7fafc;
+    --cor-borda: #4a5568;
+    --cor-primaria: #c50d0d;
+    --cor-primaria-destaque: #d8340b;
+    --cor-borda: #d80000;
+    --cor-borda2: #f1b900;
+    --cor-perigo: #d80000;
+    --cor-concluido: #f7fafc;
+    --fundo-pergaminho: #282e3a;
+    --borda-pergaminho: #4a5568;
+    --texto-pergaminho: #e2e8f0;
+}
+
+/* Contêiner que ocupa a tela toda atrás do conteúdo */
+#fundo-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.img-caindo {
+    position: absolute;
+    top: -60px;
+    animation: cair linear forwards;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+
+body {
+    background: var(--gradiente-fundo);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cartao-aplicacao {
+    background: var(--fundo-cartao);
+    color: var(--cor-texto);
+    width: 100%;
+    max-width: 440px;
+    border-radius: 5px;
+    border: solid var(--cor-borda);
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.cabecalho-aplicacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.cabecalho-aplicacao h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.botao-icone {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+    cursor: pointer;
+}
+
+.caixa-entrada {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+    outline: none;
+    font-size: 0.95rem;
+    background: transparent;
+    color: var(--cor-texto);
+}
+
+input[type="text"]:focus {
+    border-color: var(--cor-primaria);
+}
+
+.botao-principal {
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.1s, background 0.2s;
+}
+
+.botao-principal:hover {
+    background: var(--cor-primaria-destaque);
+    transform: translateY(-2px);
+}
+
+.lista-tarefas {
+    list-style: none;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.item-tarefa {
+    background: var(--cor-borda2);
+    border-radius: 5px;
+    margin-bottom: 12px;
+    padding: 10px;
+    animation: aparecer 0.3s ease;
+}
+
+.conteudo-tarefa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.texto-tarefa {
+    flex: 1;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.item-tarefa.concluido .texto-tarefa {
+    text-decoration: line-through;
+    color: var(--cor-concluido);
+}
+
+.acoes-tarefa {
+    display: flex;
+    gap: 10px;
+}
+
+.botao-acao {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--cor-texto);
+    transition: color 0.2s;
+}
+
+.botao-acao.editar:hover {
+    color: var(--cor-primaria);
+}
+
+.botao-acao.excluir:hover {
+    color: var(--cor-perigo);
+}
+
+/* Botão Central de Abrir Pergaminho */
+.area-botao-pergaminho {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.botao-pergaminho {
+    background: transparent;
+    border: 1px dashed var(--cor-primaria);
+    color: var(--cor-primaria);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.botao-pergaminho:hover {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+/* Estilos EXCLUSIVOS para a imagem do card */
+.img-card {
+    max-width: 250px;
+    width: 100%;
+    display: block;
+    margin: 20px auto; 
+    border: 5px solid var(--cor-borda);
+    border-radius: 100%;
+}
+
+/* O Pergaminho de Observações */
+.pergaminho {
+    display: none;
+    margin-top: 10px;
+    background: var(--fundo-pergaminho);
+    border: 1px solid var(--borda-pergaminho);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.pergaminho.aberto {
+    display: block;
+    animation: desdobrar 0.3s ease-out;
+}
+
+.pergaminho-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--texto-pergaminho);
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--borda-pergaminho);
+    padding-bottom: 4px;
+}
+
+.pergaminho-texto {
+    font-size: 0.88rem;
+    color: var(--texto-pergaminho);
+    font-style: italic;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 20px;
+}
+
+.pergaminho-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pergaminho-textarea {
+    width: 100%;
+    min-height: 60px;
+    background: transparent;
+    border: 1px solid var(--borda-pergaminho);
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 0.85rem;
+    color: var(--texto-pergaminho);
+    resize: vertical;
+    outline: none;
+}
+
+.pergaminho-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.btn-pergaminho-salvar {
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.rodape-aplicacao {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--cor-concluido);
+    text-align: center;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes desdobrar {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+}
